@@ -26,7 +26,7 @@ import lombok.extern.log4j.Log4j2;
 public class BookController {
     
     private final BookMstService bookMstService;
-
+    
     @Autowired
     public BookController(BookMstService bookMstService){
         this.bookMstService = bookMstService;
@@ -50,5 +50,18 @@ public class BookController {
 
         return "book/add";
     }
-    
+ @PostMapping("/book/add")
+public String addbook(@ModelAttribute BookMstDto bookMstDto){
+            
+
+    bookMstService.save(bookMstDto);
+
+    return "redirect:/book/index";
 }
+
+}
+
+
+
+
+    
